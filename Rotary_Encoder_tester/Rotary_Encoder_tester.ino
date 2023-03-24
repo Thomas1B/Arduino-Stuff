@@ -14,6 +14,9 @@ Then I added the BfButton library to make the button part easier.
 // defining button.
 BfButton btn(BfButton::STANDALONE_DIGITAL, SW, true, LOW);
 
+const float increment = 1;
+const float holdTime = 1000;
+
 // variables for debouncing
 long TimeOfLastDebounce = 0;
 const long DelayofDebounce = 0.01;
@@ -22,11 +25,11 @@ const long DelayofDebounce = 0.01;
 int preCLK;
 int preDATA;
 
+
 // Rotary Value
 float value = 0;
 
-const float increment = 1;
-const float holdTime = 1000;
+
 
 
 void setup() {
