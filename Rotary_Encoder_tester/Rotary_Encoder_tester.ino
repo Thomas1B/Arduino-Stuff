@@ -7,8 +7,8 @@ Then I added the BfButton library to make the button part easier.
 #include <BfButton.h>  // For Encoder.
 
 // Pins
-#define CLK 2
-#define DT 3
+#define CLK 2 // pin A
+#define DT 3 // pin B
 #define SW 4
 
 // defining button.
@@ -40,9 +40,11 @@ void setup() {
   pinMode(CLK, INPUT);
   pinMode(SW, INPUT_PULLUP);
 
+  Serial.print("Initial Value: ");
+  Serial.println(value);
+
   preCLK = digitalRead(CLK);
   preDATA = digitalRead(DT);
-  Serial.println(value);
 
   btn.onPress(read_button)               // single click
     .onDoublePress(read_button)          // double click
@@ -54,8 +56,8 @@ void loop() {
   btn.read();
   if ((millis() - TimeOfLastDebounce) > DelayofDebounce) {
     check_rotary();
-    preCLK = digitalRead(CLK);
-    preDATA = digitalRead(DT);
+    // preCLK = digitalRead(CLK);
+    // preDATA = digitalRead(DT);
     TimeOfLastDebounce = millis();
   }
 }
